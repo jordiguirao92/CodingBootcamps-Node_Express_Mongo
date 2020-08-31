@@ -3,7 +3,7 @@
 
  Los archivos de este repositorio son del curso de Introducción a Node.js, Express.js y MongoDB de Coding Bootcamps: http://coding-bootcamps.com/es/ 
 
- Para más información sobre este curso visite el siguiente enlace: https://learn.coding-bootcamps.com/p/introduccion-a-la-programacion-de-javascript 
+ Para más información sobre este curso visite el siguiente enlace: https://learn.coding-bootcamps.com/p/introduccion-a-node-js-express-js-y-mongodb 
 
  ### PARTE 2
  Encontramos los ejercicios y prácticas realizadas en el tema 2 del curso.
