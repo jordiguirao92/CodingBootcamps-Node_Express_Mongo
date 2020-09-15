@@ -8,8 +8,11 @@ var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
 	password : 'password',
-	database : 'coding-bootcamp'
+	database: 'accounts',
+    port: '3306'
 });
+
+
 
 const app = express();
 
@@ -22,12 +25,13 @@ app.post('/v1/user/signup',(req,res)=>{
 	if (email && password) {
 		connection.query('INSERT INTO accounts (email, password) VALUES(?,?)', [email, password], function(error, results, fields) {
             if(error){
-                res.status(400).send('Error!');
+				res.status(400).send('Error!');
+				console.log(error);
             }
             else{
                 res.status(200).send("User Account Created");
             }		
-			res.end();
+            res.end();
 		});
 	} else {
 		res.send('Please enter Username and Password!');
@@ -45,7 +49,7 @@ app.post('/v1/user/login',(req,res)=>{
 			} else {
 				res.status(400).send('Incorrect Email and/or Password!');
 			}			
-			res.end();
+            res.end();
 		});
 	} else {
 		res.send('Please enter Username and Password!');
@@ -54,5 +58,19 @@ app.post('/v1/user/login',(req,res)=>{
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {
+   connection.connect(function(err) {
+		if (err) throw err;  
+		console.log("Connected!");  
+		/* CREAR DATABASE
+		 connection.query("CREATE DATABASE accounts", function (err, result) {  
+		if (err) throw err;  
+		console.log("Database created");
+		});   */
+		/* CREAR TABLA
+		connection.query('CREATE TABLE accounts (email VARCHAR(255), password VARCHAR(255))', function (err, result) {
+			if (err) throw err;
+			console.log("Table created");
+		  });*/
+	});  
     console.log(`Listening on port ${server.address().port}`);
   });
